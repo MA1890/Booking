@@ -1,10 +1,11 @@
 package handlers
 
 import (
+	"net/http"
+
 	"github.com/tsawler/bookings-app/pkg/config"
 	"github.com/tsawler/bookings-app/pkg/models"
 	"github.com/tsawler/bookings-app/pkg/render"
-	"net/http"
 )
 
 // Repo the repository used by the handlers
@@ -44,6 +45,7 @@ func (m *Repository) About(w http.ResponseWriter, r *http.Request) {
 	remoteIP := m.App.Session.GetString(r.Context(), "remote_ip")
 	stringMap["remote_ip"] = remoteIP
 
+	// test branch
 	// send data to the template
 	render.RenderTemplate(w, "about.page.tmpl", &models.TemplateData{
 		StringMap: stringMap,
